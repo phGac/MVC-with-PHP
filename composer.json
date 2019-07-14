@@ -1,10 +1,11 @@
 {
-    "name": "phgac/mvcformat",
+    "name": "phgac/mvc-with-php",
     "type": "project",
     "description": "MVC",
     "keywords": [
-        "mvc"
+        "mvc",
     ],
+    "version": "0.9.5",
     "authors": [
         {
             "name": "Philippe Gac Balada",
