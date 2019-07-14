@@ -7,12 +7,13 @@ use App\Modules\Query;
 abstract class Model
 {
     protected $tableName;
-    protected $pk = 'id';
+    protected $pk;
     protected $maxPerPag;
     protected $log;
 
     function __construct()
     {
+        $this->pk = 'id';
         $this->maxPerPag = 10;
     }
 

@@ -90,9 +90,7 @@ class Router extends AltoRouter {
             if($controller == NULL)
                 $this->error([], "controllerNotFound");
             $result = $this->callController($controller, $match["name"], $match["params"]);
-            //print_r($result);
         }
-		
     }
 
     private function routeWithClosure($match)
