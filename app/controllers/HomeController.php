@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Modules\Controller;
+use Kernel\Base\Controller;
 
 class HomeController extends Controller
 {
@@ -18,7 +18,7 @@ class HomeController extends Controller
 
 	public function index() : void
 	{
-		require(_VIEWS.'home/home.php');
+		echo $this->render('home/index');
 	}
 
 	public function new() : void

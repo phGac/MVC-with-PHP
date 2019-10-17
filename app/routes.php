@@ -1,20 +1,12 @@
 <?php
 
-use App\Modules\Router;
+$router->addRoute('GET', '/', 'App\Controllers\HomeController::index');
+$router->addRoute('GET', '/login', 'App\Controllers\HomeController::login');
+$router->addRoute('GET', '/register', 'App\Controllers\HomeController::register');
+$router->addRoute('GET', '/logout', 'App\Controllers\UserController::logout');
 
-$router = new Router();
-
-$router->automaticRoutes('/users', 'UserController');
-
-$router->newRoute('GET', '/', 'HomeController', 'index');
-$router->newRoute("GET", "/login", "HomeController", "login");
-$router->newRoute("GET", "/register", "HomeController", "register");
-$router->newRoute('GET', '/logout', 'UserController', 'logout');
-$router->newRoute("POST", '/users/login/[a:user]/[a:password]', "UserController", "login");
-$router->newRoute('POST', '/users/register/[a:user]/[a:password]', 'UserController', 'register');
-
-$router->newRoute('GET', '/users/all', 'UserController', 'all');
-
-$router->processRequest();
-
-?>
+$router->addGroup('/users', function (RouteCollector $r) {
+    $r->addRoute('GET', '/all', 'App\Controllers\UserController::all');
+    $r->addRoute('POST', '/login/[a:user]/[a:password]', 'App\Controllers\UserController::login');
+    $r->addRoute('POST', '/register/[a:user]/[a:password]', 'App\Controllers\UserController::register');
+});

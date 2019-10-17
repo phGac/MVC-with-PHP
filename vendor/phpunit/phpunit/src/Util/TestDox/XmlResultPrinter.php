@@ -151,11 +151,9 @@ final class XmlResultPrinter extends Printer implements TestListener
             return;
         }
 
-        /* @var TestCase $test */
-
         $groups = \array_filter(
             $test->getGroups(),
-            function ($group) {
+            static function ($group) {
                 return !($group === 'small' || $group === 'medium' || $group === 'large');
             }
         );
@@ -205,7 +203,7 @@ final class XmlResultPrinter extends Printer implements TestListener
             $testNode->appendChild($testDoubleNode);
         }
 
-        $inlineAnnotations = \PHPUnit\Util\Test::getInlineAnnotations(\get_class($test), $test->getName());
+        $inlineAnnotations = \PHPUnit\Util\Test::getInlineAnnotations(\get_class($test), $test->getName(false));
 
         if (isset($inlineAnnotations['given'], $inlineAnnotations['when'], $inlineAnnotations['then'])) {
             $testNode->setAttribute('given', $inlineAnnotations['given']['value']);
