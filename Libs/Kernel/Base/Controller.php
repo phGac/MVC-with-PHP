@@ -10,7 +10,7 @@ abstract class Controller implements IController
 {
     protected $params;
     protected $twig;
-    protected const viewsFolder = __DIR__.'/../../../resources/views/';
+    protected const viewsFolder = __DIR__.'/../../../app/views/';
 
     public function __construct(array $params = null)
     {

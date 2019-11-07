@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
 	public function login()
 	{
-		require(_VIEWS.'home/login.php');
+		echo $this->render('home/login');
 	}
 
 	public function register()
